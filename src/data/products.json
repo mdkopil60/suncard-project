@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "name": "UV Protection Sunglasses",
+        "brand": "SunShade",
+        "price": 15,
+        "rating": 4.7,
+        "stock": 10,
+        "description": "Stylish UV protection sunglasses.",
+        "image": "https://i.ibb.co/jh5Xx4T/glasses.jpg",
+        "category": "Accessories"
+    },
+    {
+        "id": 2,
+        "name": "Summer Hat",
+        "brand": "BeachWear",
+        "price": 12,
+        "rating": 4.5,
+        "stock": 8,
+        "description": "Perfect hat for beach days.",
+        "image": "https://i.ibb.co/Yj8m8Hn/hat.jpg",
+        "category": "Fashion"
+    },
+    {
+        "id": 3,
+        "name": "Sunscreen SPF 50",
+        "brand": "SkinCare",
+        "price": 18,
+        "rating": 4.9,
+        "stock": 20,
+        "description": "Protect skin from UV rays.",
+        "image": "https://i.ibb.co/qk8r3dP/sunscreen.jpg",
+        "category": "Skincare"
+    },
+    {
+        "id": 4,
+        "name": "Beach Sandals",
+        "brand": "WalkEasy",
+        "price": 20,
+        "rating": 4.6,
+        "stock": 12,
+        "description": "Comfortable sandals.",
+        "image": "https://i.ibb.co/tp6n2mW/sandals.jpg",
+        "category": "Footwear"
+    },
+    {
+        "id": 5,
+        "name": "Water Bottle",
+        "brand": "CoolDrink",
+        "price": 10,
+        "rating": 4.4,
+        "stock": 30,
+        "description": "Stay hydrated.",
+        "image": "https://i.ibb.co/zQJv2m0/bottle.jpg",
+        "category": "Accessories"
+    },
+    {
+        "id": 6,
+        "name": "Summer T-shirt",
+        "brand": "Nike",
+        "price": 25,
+        "rating": 4.8,
+        "stock": 14,
+        "description": "Lightweight summer wear.",
+        "image": "https://i.ibb.co/4Pjv2v4/tshirt.jpg",
+        "category": "Clothing"
+    }
+]
