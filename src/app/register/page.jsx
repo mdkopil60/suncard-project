@@ -1,5 +1,6 @@
 'use client'
 
+import { authClient } from '@/lib/auth-client';
 import { email } from 'better-auth';
 import Link from 'next/link';
 import React from 'react';
@@ -12,18 +13,34 @@ const RegisterPage = () => {
         formState: { errors }
     } = useForm()
 
-    const handleRegisterFun = (data) => {
+    const handleRegisterFun = async (data) => {
         console.log(data, 'data');
-       
+        const { email, name, photo, password } = data;
+        console.log(name, photo);
+
+        const {data: res, error} = await authClient.signUp.email({
+            name: name, // required
+            email: email, // required
+            password: password, // required
+            image: photo,
+            callbackURL: "/",
+        })
+        console.log(res, error);
+        if(error){
+            alert(error.message);
+        }
+        if(res){
+            alert("SingUp Successful");
+        }
     }
-    console.log(errors);
+   
     return (
         <div className='container mx-auto main-h-[80vh] flex justify-center items-center bg-slate-100'>
             <div className='p-4 rounded-xl bg-white'>
                 <h2 className='font-bold text-3xl text-center mb-6'>Register your account</h2>
 
                 <form className='space-y-4' onSubmit={handleSubmit(handleRegisterFun)}>
-                     <fieldset className="fieldset">
+                    <fieldset className="fieldset">
                         <legend className="fieldset-legend">Name</legend>
                         <input
                             type="text"
@@ -35,7 +52,7 @@ const RegisterPage = () => {
 
                     </fieldset>
 
-                     <fieldset className="fieldset">
+                    <fieldset className="fieldset">
                         <legend className="fieldset-legend">Photo URL</legend>
                         <input
                             type="text"
@@ -72,7 +89,7 @@ const RegisterPage = () => {
                     </fieldset>
 
                     <button className="btn w-full bg-slate-800 text-white">Register</button>
-                   
+
                 </form>
             </div>
         </div>
