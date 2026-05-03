@@ -1,27 +1,16 @@
 import productsData from "@/data/products.json";
 import { notFound, redirect } from "next/navigation";
-// BetterAuth এর সেশন ইমপোর্ট করুন (আপনার কনফিগ অনুযায়ী)
-// import { auth } from "@/lib/auth"; 
 
 export default async function ProductDetails({ params }) {
   const { id } = params;
-
-  // ১. সেশন চেক (BetterAuth Logic)
-  // const session = await auth.getSession();
-  // if (!session) {
-  //   redirect("/login"); 
-  // }
-
   const product = productsData.find((p) => p.id === parseInt(id));
-
   if (!product) {
+    
     return notFound();
   }
-
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="flex flex-col lg:flex-row gap-12 bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
-        {/* Product Image */}
         <div className="lg:w-1/2">
           <img
             src={product.image}
@@ -30,7 +19,6 @@ export default async function ProductDetails({ params }) {
           />
         </div>
 
-        {/* Product Info */}
         <div className="lg:w-1/2 space-y-6">
           <div className="badge badge-lg badge-primary text-white">{product.category}</div>
           <h1 className="text-4xl font-extrabold text-gray-900">{product.name}</h1>

@@ -72,15 +72,10 @@ const RegisterPage = () => {
                     </fieldset>
 
                     <button className="btn w-full bg-slate-800 text-white">Register</button>
-
                    
-
                 </form>
-
             </div>
-
         </div>
     );
 };
-
 export default RegisterPage;

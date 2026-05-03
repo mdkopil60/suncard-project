@@ -1,5 +1,4 @@
 "use client";
-
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -11,15 +10,12 @@ export default function UpdateProfile() {
     const handleUpdate = async (e) => {
         e.preventDefault();
         setError("");
-
         const form = e.target;
-
         try {
             await authClient.updateUser({
                 name: form.name.value,
                 image: form.image.value,
             });
-
             router.push("/profile");
         } catch (err) {
             setError("Update failed ");
