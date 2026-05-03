@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+auth
+ // path to your auth file
 
-## Getting Started
+import { auth } from "@/lib/auth";
+import { toNextJsHandler } from "better-auth/next-js";
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+export const { POST, GET } = toNextJsHandler(auth);
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+.env
+BETTER_AUTH_SECRET=zmhz4M1v01XXD8lWIlwax2W3F6wJYLmy
+BETTER_AUTH_URL=http://localhost:3000
+MONGODB_URI=mongodb+srv://a-8-suncard:gHWPtFOgi23F1Jo4@cluster0.hhoc4ks.mongodb.net/?appName=Cluster0
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+route.js
+ // path to your auth file
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+import { auth } from "@/lib/auth";
+import { toNextJsHandler } from "better-auth/next-js";
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+export const { POST, GET } = toNextJsHandler(auth);
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+auth.js
+import { betterAuth } from "better-auth";
+import { MongoClient } from "mongodb";
+import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+const client = new MongoClient(process.env.MONGO_URI);
+const db = client.db();
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+export const auth = betterAuth({
+    emailAndPassword: {
+        enabled: true,
+    },
+    database: mongodbAdapter(db, {
+        // Optional: if you don't provide a client, database transactions won't be enabled.
+        client
+    }),
+});

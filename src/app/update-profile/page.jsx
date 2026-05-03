@@ -1,19 +1,29 @@
 "use client";
 
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function UpdateProfile() {
+    const router = useRouter();
+    const [error, setError] = useState("");
+
     const handleUpdate = async (e) => {
         e.preventDefault();
+        setError("");
 
         const form = e.target;
 
-        await authClient.updateUser({
-            name: form.name.value,
-            image: form.image.value,
-        });
+        try {
+            await authClient.updateUser({
+                name: form.name.value,
+                image: form.image.value,
+            });
 
-        window.location.href = "/profile";
+            router.push("/profile");
+        } catch (err) {
+            setError("Update failed ");
+        }
     };
 
     return (
@@ -32,6 +42,8 @@ export default function UpdateProfile() {
                 placeholder="New Image URL"
                 className="input input-bordered w-full"
             />
+
+            {error && <p className="text-red-500">{error}</p>}
 
             <button className="btn btn-primary w-full">
                 Update Information

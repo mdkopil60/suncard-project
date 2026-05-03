@@ -1,82 +1,86 @@
-"use client";
+'use client'
 
-import { authClient } from "@/lib/auth-client";
-import { useState } from "react";
+import { email } from 'better-auth';
+import Link from 'next/link';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
-export default function Register() {
-    const [error, setError] = useState("");
+const RegisterPage = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm()
 
-    const handleRegister = async (e) => {
-        e.preventDefault();
-
-        const form = e.target;
-
-        const name = form.name.value;
-        const email = form.email.value;
-        const image = form.image.value;
-        const password = form.password.value;
-
-        const { error } = await authClient.signUp.email({
-            email,
-            password,
-            name,
-            image,
-        });
-
-        if (error) {
-            setError(error.message);
-        } else {
-            window.location.href = "/login";
-        }
-    };
-
+    const handleRegisterFun = (data) => {
+        console.log(data, 'data');
+       
+    }
+    console.log(errors);
     return (
-        <form
-            onSubmit={handleRegister}
-            className="max-w-md mx-auto py-20 space-y-4"
-        >
-            <h1 className="text-3xl font-bold">Register</h1>
+        <div className='container mx-auto main-h-[80vh] flex justify-center items-center bg-slate-100'>
+            <div className='p-4 rounded-xl bg-white'>
+                <h2 className='font-bold text-3xl text-center mb-6'>Register your account</h2>
 
-            <input
-                name="name"
-                placeholder="Name"
-                className="input input-bordered w-full"
-            />
+                <form className='space-y-4' onSubmit={handleSubmit(handleRegisterFun)}>
+                     <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Name</legend>
+                        <input
+                            type="text"
+                            className="input"
+                            placeholder="Your Name"
+                            {...register("name", { required: "Name field is required" })}
+                        />
+                        {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
 
-            <input
-                name="email"
-                placeholder="Email"
-                className="input input-bordered w-full"
-            />
+                    </fieldset>
 
-            <input
-                name="image"
-                placeholder="Photo URL"
-                className="input input-bordered w-full"
-            />
+                     <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Photo URL</legend>
+                        <input
+                            type="text"
+                            className="input"
+                            placeholder="Your Photo URL"
+                            {...register("photo", { required: "Photo URL field is required" })}
+                        />
+                        {errors.photo && <p className='text-red-500'>{errors.photo.message}</p>}
 
-            <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                className="input input-bordered w-full"
-            />
+                    </fieldset>
 
-            <button className="btn btn-primary w-full">
-                Register
-            </button>
 
-            <button
-                type="button"
-                onClick={() => authClient.signIn.social({
-                    provider: "google",
-                })}
-                className="btn btn-outline w-full"
-            >
-                Google Login
-            </button>
 
-            <p className="text-red-500">{error}</p>
-        </form>
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Email</legend>
+                        <input
+                            type="email"
+                            className="input"
+                            placeholder="Your Email"
+                            {...register("email", { required: "Email field is required" })}
+                        />
+                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                    </fieldset>
+
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Password</legend>
+                        <input
+                            type="password"
+                            className="input"
+                            placeholder="Password"
+                            {...register("password", { required: "Password field is required" })}
+                        />
+                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+                    </fieldset>
+
+                    <button className="btn w-full bg-slate-800 text-white">Register</button>
+
+                   
+
+                </form>
+
+            </div>
+
+        </div>
     );
-}
+};
+
+export default RegisterPage;

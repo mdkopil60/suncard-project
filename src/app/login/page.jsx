@@ -1,66 +1,59 @@
-"use client";
+'use client'
 
-import { authClient } from "@/lib/auth-client";
-import { useState } from "react";
+import Link from 'next/link';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 
-export default function Login() {
-    const [error, setError] = useState("");
+const loginPage = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm()
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-
-        const form = e.target;
-
-        const email = form.email.value;
-        const password = form.password.value;
-
-        const { error } = await authClient.signIn.email({
-            email,
-            password,
-        });
-
-        if (error) {
-            setError(error.message);
-        } else {
-            window.location.href = "/";
-        }
-    };
-
+    const handleLoginFun = (data) => {
+        console.log(data, 'data');
+    }
+    console.log(errors);
     return (
-        <form
-            onSubmit={handleLogin}
-            className="max-w-md mx-auto py-20 space-y-4"
-        >
-            <h1 className="text-3xl font-bold">Login</h1>
+        <div className='container mx-auto main-h-[80vh] flex justify-center items-center bg-slate-100'>
+            <div className='p-4 rounded-xl bg-white'>
+                <h2 className='font-bold text-3xl text-center mb-6'>Login your account</h2>
 
-            <input
-                name="email"
-                placeholder="Email"
-                className="input input-bordered w-full"
-            />
+                <form className='space-y-4' onSubmit={handleSubmit(handleLoginFun)}>
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Email</legend>
+                        <input
+                            type="email"
+                            className="input"
+                            placeholder="Your Email"
+                            {...register("email", { required: "Email field is required" })}
+                        />
+                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
 
-            <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                className="input input-bordered w-full"
-            />
+                    </fieldset>
 
-            <button className="btn btn-primary w-full">
-                Login
-            </button>
+                    <fieldset className="fieldset">
+                        <legend className="fieldset-legend">Password</legend>
+                        <input
+                            type="password"
+                            className="input"
+                            placeholder="Password"
+                            {...register("password", { required: "Password field is required" })}
+                        />
+                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+                    </fieldset>
 
-            <button
-                type="button"
-                onClick={() => authClient.signIn.social({
-                    provider: "google",
-                })}
-                className="btn btn-outline w-full"
-            >
-                Google Login
-            </button>
+                    <button className="btn w-full bg-slate-800 text-white">Login</button>
 
-            <p className="text-red-500">{error}</p>
-        </form>
+                    <p className='mt-4'>Don't have account? <Link href={'/register'} className='text-blue-500'>Register</Link></p>
+
+                </form>
+
+            </div>
+
+        </div>
     );
-}
+};
+
+export default loginPage;
