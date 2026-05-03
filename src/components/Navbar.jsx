@@ -33,7 +33,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 <div className="flex justify-between gap-4">
                     <Image src={userAvatar} alt="User pic" width={40} height={40}></Image>
-                    <button className="btn bg-primary text-white"> <Link href={"/login"}>login</Link></button>
+                    <button className="btn bg-fuchsia-500 text-white "> <Link href={"/login"}>login</Link></button>
                 </div>
             </div>
         </div>

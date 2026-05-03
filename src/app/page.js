@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import ProductCard from "@/components/ProductCard";
+import TopBrands from "@/components/TopBrands";
 import products from "@/data/products.json";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <TopBrands></TopBrands>
     </main>
   );
 }
