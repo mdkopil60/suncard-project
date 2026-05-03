@@ -1,9 +1,15 @@
-'use client'
+'use client';
 import Link from "next/link";
 import userAvatar from "@/assets/user.png"
 import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
+
 
 const Navbar = () => {
+    const { data: session , isPending } = authClient.useSession();
+    const user = session?.user;
+
+    console.log(user, isPending, "user");
     return (
 
         <div className="navbar bg-base-100 shadow-sm">
@@ -30,19 +36,30 @@ const Navbar = () => {
                     <li><Link href={'/profile'}>My Profile</Link></li>
                 </ul>
             </div>
-            <div className="navbar-end">
-                <div className="flex justify-between gap-4">
-                    <Image src={userAvatar} alt="User pic" width={40} height={40}></Image>
-                    <button className="btn bg-fuchsia-500 text-white "> <Link href={"/login"}>login</Link></button>
+
+            { isPending ? <span className="loading loading-spinner text-primary"></span>: user ? (
+                <div className="navbar-end">
+                    <div className="flex justify-between gap-4 items-center">
+                        <h2>Hello {user?.name}</h2>
+                        <Image
+                            src={user?.image && user.image.startsWith('http') ? user.image :  userAvatar}
+                            alt="User pic"
+                            width={40}
+                            height={40}
+                            className="rounded-full"
+                        />
+                        <button className="btn bg-primary text-white" onClick={ async()=> await authClient.signOut()}>Logout</button>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="navbar-end">
+                    <button className="btn bg-fuchsia-500 text-white">
+                        <Link href={"/login"}>Login</Link>
+                    </button>
+                </div>
+            )};
         </div>
-
-
-
-
-
-    );
-};
+    )
+}
 
 export default Navbar;

@@ -1,10 +1,10 @@
 'use client'
 
 import { authClient } from '@/lib/auth-client';
-import { email } from 'better-auth';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from 'react-icons/fa';
 
 const loginPage = () => {
     const {
@@ -13,16 +13,31 @@ const loginPage = () => {
         formState: { errors }
     } = useForm()
 
-    const handleLoginFun = async(data) => {
+    const [isShowPassword, setIsShowPassword] = useState(false)
+
+    const handleGoogleSignin = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+        console.log(data);
+    }
+    const handleGithubSignin = async () => {
+        const data = await authClient.signIn.social({
+            provider: "github",
+        });
+        console.log(data);
+    }
+
+    const handleLoginFun = async (data) => {
         console.log(data, 'data');
 
-        const { data:res, error } = await authClient.signIn.email({
+        const { data: res, error } = await authClient.signIn.email({
             email: data.email, // required
             password: data.password, // required
             rememberMe: true,
             callbackURL: "/",
         });
-        console.log(res , error);
+        console.log(res, error);
     }
     console.log(errors);
     return (
@@ -43,25 +58,37 @@ const loginPage = () => {
 
                     </fieldset>
 
-                    <fieldset className="fieldset">
+                    <fieldset className="fieldset relative">
                         <legend className="fieldset-legend">Password</legend>
                         <input
-                            type="password"
+                            type={isShowPassword ? "text" : "password"}
                             className="input"
                             placeholder="Password"
                             {...register("password", { required: "Password field is required" })}
                         />
+                        <span className='absolute right-1 top-4 cursor-pointer' onClick={() => setIsShowPassword(!isShowPassword)}>
+                            {isShowPassword ? <FaEye /> : <FaEyeSlash />}
+                        </span>
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </fieldset>
 
                     <button className="btn w-full bg-slate-800 text-white">Login</button>
 
                     <p className='mt-4'>Don't have account? <Link href={'/register'} className='text-blue-500'>Register</Link></p>
+                    <div className='flex justify-between'>
+                        <button className='btn border-blue-500 text-blue-500' onClick={handleGoogleSignin}>
+                            <FaGoogle />
+                            Login google
+                        </button>
+
+                        <button className='btn border-blue-500 text-blue-500 items-center' onClick={handleGithubSignin}>
+                            <FaGithub />
+                            Login github
+                        </button>
+                    </div>
 
                 </form>
-
             </div>
-
         </div>
     );
 };
