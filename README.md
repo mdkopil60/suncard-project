@@ -1,6 +1,6 @@
 ☀️ SunCart – Summer Essentials Store
 
-🌐 Live: https://your-live-link.vercel.app
+🌐 Live: https://suncard-project.vercel.app/
 📂 Repo: https://github.com/mdkopil60/suncard-project
 
 ---
