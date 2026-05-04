@@ -1,8 +1,4 @@
 import Image from "next/image";
-import crd from "../assets/img1.svg"
-import crd2 from "../assets/img2.jpg"
-import crd3 from "../assets/img3.jpeg"
-import crd4 from "../assets/img4.png"
 
 export default function TopBrands() {
     return (
@@ -11,7 +7,7 @@ export default function TopBrands() {
 
                 {/* Title */}
                 <h2 className="text-3xl md:text-4xl font-bold text-center text-orange-600 mb-10">
-                    🌟 Top Brands
+                    Top Brands
                 </h2>
 
                 {/* Cards */}
@@ -20,20 +16,13 @@ export default function TopBrands() {
                     {/* Card 1 */}
                     <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
                         <figure className="pt-6">
-                            <Image src={crd} alt="Ray-Ban" width={90} height={90} />
-                        </figure>
-                        <div className="card-body text-center">
-                            <h3 className="card-title justify-center">Ray-Ban</h3>
-                            <p className="text-sm text-gray-500">Sunglasses</p>
-                            <p className="text-sm">Premium UV protection with iconic style.</p>
-                            <button className="btn btn-warning btn-sm mt-3 text-white">Explore</button>
-                        </div>
-                    </div>
-
-                    {/* Card 2 */}
-                    <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
-                        <figure className="pt-6">
-                            <Image src={crd2} alt="H&M" width={90} height={90} />
+                            <Image
+                                src="/assets/classic.jpg"
+                                alt="H&M"
+                                width={90}
+                                height={90}
+                                className="object-contain"
+                            />
                         </figure>
                         <div className="card-body text-center">
                             <h3 className="card-title justify-center">H&M</h3>
@@ -43,10 +32,35 @@ export default function TopBrands() {
                         </div>
                     </div>
 
+                    {/* Card 2 */}
+                    <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
+                        <figure className="pt-6">
+                            <Image
+                                src="/assets/pic-2.png"
+                                alt="Zara"
+                                width={90}
+                                height={90}
+                                className="object-contain"
+                            />
+                        </figure>
+                        <div className="card-body text-center">
+                            <h3 className="card-title justify-center">Zara</h3>
+                            <p className="text-sm text-gray-500">Summer Outfits</p>
+                            <p className="text-sm">Trendy, lightweight outfits for hot days.</p>
+                            <button className="btn btn-warning btn-sm mt-3 text-white">Explore</button>
+                        </div>
+                    </div>
+
                     {/* Card 3 */}
                     <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
                         <figure className="pt-6">
-                            <Image src={crd3} alt="Nivea" width={90} height={90} />
+                            <Image
+                                src="/assets/img4.png"
+                                alt="Nivea"
+                                width={90}
+                                height={90}
+                                className="object-contain"
+                            />
                         </figure>
                         <div className="card-body text-center">
                             <h3 className="card-title justify-center">Nivea</h3>
@@ -59,7 +73,13 @@ export default function TopBrands() {
                     {/* Card 4 */}
                     <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
                         <figure className="pt-6">
-                            <Image src={crd4} alt="Decathlon" width={90} height={90} />
+                            <Image
+                                src="/assets/unSun.webp"
+                                alt="Decathlon"
+                                width={90}
+                                height={90}
+                                className="object-contain"
+                            />
                         </figure>
                         <div className="card-body text-center">
                             <h3 className="card-title justify-center">Decathlon</h3>

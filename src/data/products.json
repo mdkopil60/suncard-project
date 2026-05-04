@@ -7,7 +7,7 @@
         "rating": 4.7,
         "stock": 10,
         "description": "Stylish UV protection sunglasses.",
-        "image": "./src/assets/unSun.webp",
+        "image": "/assets/classic.jpg",
         "category": "Accessories"
     },
     {
@@ -18,7 +18,7 @@
         "rating": 4.5,
         "stock": 8,
         "description": "Perfect hat for beach days.",
-        "image": "/src/assets/summer.webp",
+        "image": "/assets/pic-2.png",
         "category": "Fashion"
     },
     {
@@ -29,7 +29,7 @@
         "rating": 4.9,
         "stock": 20,
         "description": "Protect skin from UV rays.",
-        "image": "https://i.ibb.co/qk8r3dP/sunscreen.jpg",
+        "image": "/assets/pic-3.png",
         "category": "Skincare"
     },
     {
@@ -40,7 +40,7 @@
         "rating": 4.6,
         "stock": 12,
         "description": "Comfortable sandals.",
-        "image": "https://i.ibb.co/tp6n2mW/sandals.jpg",
+        "image": "/assets/pic-4.png",
         "category": "Footwear"
     },
     {
@@ -51,7 +51,7 @@
         "rating": 4.4,
         "stock": 30,
         "description": "Stay hydrated.",
-        "image": "https://i.ibb.co/zQJv2m0/bottle.jpg",
+        "image": "/assets/pic-5.png",
         "category": "Accessories"
     },
     {
@@ -62,7 +62,7 @@
         "rating": 4.8,
         "stock": 14,
         "description": "Lightweight summer wear.",
-        "image": "https://i.ibb.co/4Pjv2v4/tshirt.jpg",
+        "image": "/assets/pic6.png",
         "category": "Clothing"
     }
 ]

@@ -1,33 +1,36 @@
 import Link from "next/link";
-import bg from "../assets/summer.webp"
 
 const Hero = () => {
     return (
-        <div
-            className="hero min-h-screen"
-            style={{
-                backgroundImage:
-                    "url{bg}",
-            }}
-        >
-            <div className="hero-overlay"></div>
-            <div className="hero-content text-neutral-content text-center">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">
-                        Summer Sale  50% OFF
+        <div className="hero min-h-[80vh] bg-gradient-to-r from-yellow-200 via-orange-200 to-pink-200">
+            <div className="hero-content flex-col lg:flex-row-reverse gap-10">
+
+                {/* Image */}
+                <img
+                    src="/assets/hero.webp"
+                    className="max-w-sm rounded-lg shadow-2xl"
+                    alt="summer"
+                />
+
+                {/* Text Content */}
+                <div>
+                    <h1 className="text-5xl font-bold text-orange-600">
+                        Summer Sale
                     </h1>
-
-                    <p className="mb-5">
-                        Discover hot summer deals on sunglasses, outfits, skincare & more!
+                    <p className="py-6 text-xl">
+                        Get up to <span className="font-bold text-red-500">50% OFF</span> on
+                        sunglasses, outfits, skincare & more.<br /> Stay cool and stylish this summer!
                     </p>
-
-                    <Link href="/products">
-                        <button className="btn btn-primary">Shop Now </button>
-                    </Link>
+                    <div className="items-center">
+                        <Link href="/products">
+                            <button className="btn btn-primary">Shop Now</button>
+                        </Link>
+                    </div>
                 </div>
+
             </div>
         </div>
     );
-};
+}
 
 export default Hero;

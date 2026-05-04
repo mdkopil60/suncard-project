@@ -1,9 +1,11 @@
 'use client';
-import Link from "next/link";
-import userAvatar from "@/assets/user.png"
+
+
+
 import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
-
+import Link from "next/link";
+// import userAvoter from "/assets/user.png"
 
 const Navbar = () => {
     const { data: session , isPending } = authClient.useSession();
@@ -42,7 +44,7 @@ const Navbar = () => {
                     <div className="flex justify-between gap-4 items-center">
                         <h2>Hello {user?.name}</h2>
                         <Image
-                            src={user?.image && user.image.startsWith('http') ? user.image :  userAvatar}
+                            src={user?.image && user.image.startsWith('http') ? user.image :userAvoter}
                             alt="User pic"
                             width={40}
                             height={40}

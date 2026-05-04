@@ -5,7 +5,7 @@ export default function ProductsPage() {
     return (
         <div>
             <h1 className="text-4xl font-bold text-center my-10">
-                Summer Products ☀️
+                Summer Products 
             </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
