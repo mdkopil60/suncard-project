@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 
 export default async function ProductDetails({ params }) {
-    const resolverParams = await params;
+    const resolverParams = await params ;
     const id = resolverParams.id
 
     const session = await auth.api.getSession({
@@ -15,7 +15,7 @@ export default async function ProductDetails({ params }) {
         redirect("/login");
     }
 
-
+  
 
     const product = products.find(
         (p) => p.id === Number(id)
