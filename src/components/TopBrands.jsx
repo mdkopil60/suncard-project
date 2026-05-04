@@ -17,7 +17,7 @@ export default function TopBrands() {
                     <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
                         <figure className="pt-6">
                             <Image
-                                src="/assets/classic.jpg"
+                                src="/assets/Roles.png"
                                 alt="H&M"
                                 width={90}
                                 height={90}
