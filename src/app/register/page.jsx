@@ -10,13 +10,13 @@ const RegisterPage = () => {
         const data = await authClient.signIn.social({
             provider: "google",
         });
-        console.log(data);
+        // console.log(data);
     }
     const handleGithubSignin = async () => {
         const data = await authClient.signIn.social({
             provider: "github",
         });
-        console.log(data);
+        // console.log(data);
     }
     const {
         register,
@@ -38,7 +38,7 @@ const RegisterPage = () => {
             image: photo,
             callbackURL: "/",
         })
-        console.log(res, error);
+        // console.log(res, error);
         if (error) {
             alert(error.message);
         }

@@ -19,13 +19,13 @@ const loginPage = () => {
         const data = await authClient.signIn.social({
             provider: "google",
         });
-        console.log(data);
+        // console.log(data);
     }
     const handleGithubSignin = async () => {
         const data = await authClient.signIn.social({
             provider: "github",
         });
-        console.log(data);
+        // console.log(data);
     }
 
     const handleLoginFun = async (data) => {
@@ -39,7 +39,7 @@ const loginPage = () => {
         });
         console.log(res, error);
     }
-    console.log(errors);
+    // console.log(errors);
     return (
         <div className='container mx-auto main-h-[80vh] flex justify-center items-center bg-slate-100'>
             <div className='p-4 rounded-xl bg-white'>
@@ -74,7 +74,7 @@ const loginPage = () => {
 
                     <button className="btn w-full bg-slate-800 text-white">Login</button>
 
-                    <p className='mt-4'>Don't have account? <Link href={'/register'} className='text-blue-500'>Register</Link></p>
+                    <p className='mt-4'>Dont have account? <Link href={'/register'} className='text-blue-500'>Register</Link></p>
                     <div className='flex justify-between'>
                         <button className='btn border-blue-500 text-blue-500' onClick={handleGoogleSignin}>
                             <FaGoogle />
