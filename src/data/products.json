@@ -7,7 +7,7 @@
         "rating": 4.7,
         "stock": 10,
         "description": "Stylish UV protection sunglasses.",
-        "image": "https://i.ibb.co/jh5Xx4T/glasses.jpg",
+        "image": "./src/assets/unSun.webp",
         "category": "Accessories"
     },
     {
@@ -18,7 +18,7 @@
         "rating": 4.5,
         "stock": 8,
         "description": "Perfect hat for beach days.",
-        "image": "https://i.ibb.co/Yj8m8Hn/hat.jpg",
+        "image": "/src/assets/summer.webp",
         "category": "Fashion"
     },
     {

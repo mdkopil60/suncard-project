@@ -1,6 +1,8 @@
 import Image from "next/image";
-import img from "../assets/Classic.jpg"
-import Rolex from "../assets/Roles.png"
+import crd from "../assets/img1.svg"
+import crd2 from "../assets/img2.jpg"
+import crd3 from "../assets/img3.jpeg"
+import crd4 from "../assets/img4.png"
 
 export default function TopBrands() {
     return (
@@ -18,7 +20,7 @@ export default function TopBrands() {
                     {/* Card 1 */}
                     <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
                         <figure className="pt-6">
-                            <Image src={img} alt="Ray-Ban" width={90} height={90} />
+                            <Image src={crd} alt="Ray-Ban" width={90} height={90} />
                         </figure>
                         <div className="card-body text-center">
                             <h3 className="card-title justify-center">Ray-Ban</h3>
@@ -31,7 +33,7 @@ export default function TopBrands() {
                     {/* Card 2 */}
                     <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
                         <figure className="pt-6">
-                            <Image src={Rolex} alt="H&M" width={90} height={90} />
+                            <Image src={crd2} alt="H&M" width={90} height={90} />
                         </figure>
                         <div className="card-body text-center">
                             <h3 className="card-title justify-center">H&M</h3>
@@ -44,7 +46,7 @@ export default function TopBrands() {
                     {/* Card 3 */}
                     <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
                         <figure className="pt-6">
-                            <Image src="/brands/nivea.png" alt="Nivea" width={90} height={90} />
+                            <Image src={crd3} alt="Nivea" width={90} height={90} />
                         </figure>
                         <div className="card-body text-center">
                             <h3 className="card-title justify-center">Nivea</h3>
@@ -57,7 +59,7 @@ export default function TopBrands() {
                     {/* Card 4 */}
                     <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2">
                         <figure className="pt-6">
-                            <Image src="/brands/decathlon.png" alt="Decathlon" width={90} height={90} />
+                            <Image src={crd4} alt="Decathlon" width={90} height={90} />
                         </figure>
                         <div className="card-body text-center">
                             <h3 className="card-title justify-center">Decathlon</h3>
